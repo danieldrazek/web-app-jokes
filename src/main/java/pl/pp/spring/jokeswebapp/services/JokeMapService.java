@@ -4,12 +4,13 @@ import org.springframework.stereotype.Service;
 import pl.pp.spring.jokeswebapp.model.Joke;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 @Service
 public class JokeMapService implements JokeService{
-    private Map<Long, Joke> jokeMap;
+    public Map<Long, Joke> jokeMap = new HashMap<>();
 
     @Override
     public List<Joke> findAll() {
