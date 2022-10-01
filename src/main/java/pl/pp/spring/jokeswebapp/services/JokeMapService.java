@@ -10,7 +10,7 @@ import java.util.Map;
 
 @Service
 public class JokeMapService implements JokeService{
-    public Map<Long, Joke> jokeMap = new HashMap<>();
+    private Map<Long, Joke> jokeMap = new HashMap<>();
 
     @Override
     public List<Joke> findAll() {
