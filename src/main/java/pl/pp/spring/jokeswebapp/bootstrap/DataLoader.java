@@ -17,16 +17,20 @@ public class DataLoader implements CommandLineRunner {
     public void run(String... args) {
 
         Joke joke1 = new Joke();
-        joke1.setTitle("Tesciowa");
-        joke1.setContent("byla sobie tesciowa.\n" +
-                "byla sobie tesciowa.\n" +
-                "byla sobie tesciowa.\n");
+        joke1.setTitle("Okup za teściową");
+        joke1.setContent("Mężczyzna odbiera telefon:\n" +
+                "-Słucham\n" +
+                "*Mamy twoją teściową. musisz zapłacić 100 000 zł okupu - słyszy w telefonie.\n" +
+                "-A co jeśli nie zapłacę? - Zastanawia się mężczyzna.\n" +
+                "*To ją sklonujemy! - odpowiada porywacz.");
 
         Joke joke2 = new Joke();
-        joke2.setTitle("Jasiu");
-        joke2.setContent("byl sobie Jasiu i Malgosia.\n" +
-                "byl sobie Jasiu i Malgosia.\n" +
-                "byl sobie Jasiu i Malgosia.");
+        joke2.setTitle("Centralny ośrodek kontroli oddawania moczu");
+        joke2.setContent("Zwykły uczeń: Masakra, ale ten sprawdzian z biologii był trudny.\n" +
+                "Kujon: Nie był w cale taki trudny. No powiedz z czym miałeś problem?\n" +
+                "Zwykły uczeń: No np było takie pytanie. Gdzie jest centralny ośrodek kontroli oddawania moczu?\n" +
+                "Kujon: No to jest łatwa pytanie. No oczywiście że w korze mózgowej.\n" +
+                "Zwykły uczeń: Kurdę, a ja napisałem że w warszawie. ");
 
         jokeService.save(joke1);
         jokeService.save(joke2);
