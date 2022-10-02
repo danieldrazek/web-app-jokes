@@ -1,10 +1,15 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Suchary</title>
 </head>
 <body>
     <h1>Witaj na stronie z sucharami</h1>
+    <div th:each="joke : ${jokes}">
+        <h2 th:text="${joke.title}">Title</h2>
+        <pre th:text="${joke.content}">Content</pre>
+    </div>
+
 </body>
 </html>

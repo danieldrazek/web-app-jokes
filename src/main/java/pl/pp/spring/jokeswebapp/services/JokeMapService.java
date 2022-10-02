@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Map;
 
 @Service
-public class JokeMapService implements JokeService{
+public class JokeMapService implements JokeService {
     public Map<Long, Joke> jokeMap = new HashMap<>();
 
     @Override
