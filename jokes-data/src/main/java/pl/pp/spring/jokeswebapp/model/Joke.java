@@ -6,7 +6,7 @@ public class Joke {
     private Long id;
     private String title;
     private String content;
-    private List<Category> categories;
+    private List<Joke> categories;
 
     public Joke() {
     }
@@ -49,11 +49,11 @@ public class Joke {
         this.content = content;
     }
 
-    public List<Category> getCategories() {
+    public List<Joke> getCategories() {
         return categories;
     }
 
-    public void setCategories(List<Category> categories) {
+    public void setCategories(List<Joke> categories) {
         this.categories = categories;
     }
 
