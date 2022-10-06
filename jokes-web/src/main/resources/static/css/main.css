@@ -8,6 +8,34 @@ body {
     margin-right: auto;
 }
 
+#categories {
+    width: 200px;
+    float: left;
+}
+
+#jokes {
+    width: 700px;
+    float: left;
+}
+.header {
+    text-align: center;
+}
+
+.category {
+    border: 1px solid black;
+    border-radius: 5px;
+    text-align: center;
+    width: 180px;
+    padding: 3px;
+    margin-top: 5px;
+    background-color: #CCC;
+}
+
+.category:hover {
+    background-color: #BBB;
+    cursor: pointer;
+}
+
 .joke {
     border: 2px solid black;
     border-radius: 10px;
@@ -16,7 +44,7 @@ body {
 
 .title {
     text-align: center;
-    background-color: #BBB;
+    background-color: #CCC;
     border-bottom: 1px dashed #555;
     border-radius: 10px;
     margin: 0;
@@ -24,5 +52,5 @@ body {
 }
 
 .content {
-    padding-left: 10px;
+     padding-left: 10px;
 }
