@@ -21,6 +21,25 @@ body {
     text-align: center;
 }
 
+.add-button {
+    background-color: #00AA00;
+    border: 1px solid black;
+    border-radius: 5px;
+    width: 150px;
+    padding: 3px;
+    text-align: center;
+}
+
+.add-button:hover {
+     background-color: #00DD00;
+     cursor: pointer;
+}
+
+.inner-link {
+    text: black;
+    text-decoration: none;
+}
+
 .category {
     border: 1px solid black;
     border-radius: 5px;
