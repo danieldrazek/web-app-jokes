@@ -1,10 +1,11 @@
 package pl.pp.spring.jokeswebapp.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Category extends BaseEntity{
     private String name;
-    private List<Joke> jokes;
+    private List<Joke> jokes = new ArrayList<>();
 
     public Category() {
     }
@@ -16,7 +17,7 @@ public class Category extends BaseEntity{
     @Override
     public String toString() {
         return "Category{" +
-                "id='" + getId() + '\'' +
+                "id='" + getId() +
                 "name='" + name + '\'' +
                 '}';
     }

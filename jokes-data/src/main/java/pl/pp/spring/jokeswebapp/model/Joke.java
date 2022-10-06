@@ -1,11 +1,12 @@
 package pl.pp.spring.jokeswebapp.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Joke extends BaseEntity{
     private String title;
     private String content;
-    private List<Joke> categories;
+    private List<Category> categories = new ArrayList<>();
 
     public Joke() {
     }
@@ -40,12 +41,11 @@ public class Joke extends BaseEntity{
         this.content = content;
     }
 
-    public List<Joke> getCategories() {
+    public List<Category> getCategories() {
         return categories;
     }
 
-    public void setCategories(List<Joke> categories) {
+    public void setCategories(List<Category> categories) {
         this.categories = categories;
     }
-
 }
