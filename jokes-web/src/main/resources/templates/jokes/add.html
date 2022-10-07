@@ -4,9 +4,26 @@
     <meta charset="UTF-8">
     <title>Add new joke</title>
     <link rel="stylesheet" th:href="@{/css/main.css}">
+    <link rel="stylesheet" th:href="@{/css/form.css}">
 </head>
 <body>
-    <h1>Add new joke</h1>
+    <h1 class="header">Add new joke</h1>
+
+    <div id="form-container">
+        <form>
+            <input type="text" placeholder="Title">
+            <textarea rows="7" placeholder="joke"></textarea>
+
+            <h3>Category</h3>
+            <div th:each="category : ${categories}">
+                <input th:attr="id=${category.id}" type="checkbox">
+                <label th:attr="for=${category.id}" th:text="${category.name}">Category</label>
+            </div>
+
+            <input type="Submit" value="Add">
+
+        </form>
+    </div>
 
 </body>
 </html>
