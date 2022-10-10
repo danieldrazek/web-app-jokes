@@ -22,6 +22,14 @@ public class JokeController {
         this.jokeService = jokeService;
     }
 
+    @RequestMapping({"/jokes"})
+    public String showIndex(Model model, @RequestParam("categoryId") Long categoryId) {
+        model.addAttribute("jokes", categoryService.findById(categoryId).getJokes());
+        model.addAttribute("categories", categoryService.findAll());
+
+        return "index";
+    }
+
     @GetMapping ("/jokes/add")
     public String addJokeForm(Model model) {
         model.addAttribute("categories", categoryService.findAll());
@@ -37,7 +45,10 @@ public class JokeController {
         List<Category> categories = new ArrayList<>();
 
         for (Long id : categoryIds) {
-            categories.add(categoryService.findById(id));
+            Category category = categoryService.findById(id);
+            category.getJokes().add(joke);
+            categoryService.save(category);
+            categories.add(category);
         }
 
         System.out.println(categories);
