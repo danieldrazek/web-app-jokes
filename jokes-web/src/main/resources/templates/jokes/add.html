@@ -10,13 +10,13 @@
     <h1 class="header">Add new joke</h1>
 
     <div id="form-container">
-        <form>
-            <input type="text" placeholder="Title">
-            <textarea rows="7" placeholder="joke"></textarea>
+        <form method="post" th:action="@{/jokes/add}" th:object="${joke}">
+            <input type="text" placeholder="Title" th:field="*{title}">
+            <textarea rows="7" placeholder="joke" th:field="*{content}"></textarea>
 
             <h3>Category</h3>
             <div th:each="category : ${categories}">
-                <input th:attr="id=${category.id}" type="checkbox">
+                <input th:attr="id=${category.id}" type="checkbox" name="category" th:value="${category.id}">
                 <label th:attr="for=${category.id}" th:text="${category.name}">Category</label>
             </div>
 
