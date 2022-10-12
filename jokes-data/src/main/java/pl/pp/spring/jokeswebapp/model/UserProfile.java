@@ -19,6 +19,9 @@ public class UserProfile {
     @Lob
     private Byte[] image;
 
+    @OneToOne
+    private User user;
+
     public Long getId() {
         return id;
     }
@@ -65,5 +68,13 @@ public class UserProfile {
 
     public void setImage(Byte[] image) {
         this.image = image;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }
