@@ -4,13 +4,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "user1")
-public class User {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    private Long id;
-
+public class User extends BaseEntity{
     @Column(name = "username")
     private String username;
 
@@ -22,14 +16,6 @@ public class User {
 
     @OneToOne(cascade = CascadeType.ALL)
     private UserProfile userProfile;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public String getUsername() {
         return username;

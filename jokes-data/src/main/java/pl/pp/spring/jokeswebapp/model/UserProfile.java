@@ -4,12 +4,7 @@ import javax.persistence.*;
 import java.time.LocalDate;
 
 @Entity
-public class UserProfile {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    private Long id;
+public class UserProfile extends BaseEntity{
 
     private String firstName;
     private String lastName;
@@ -21,14 +16,6 @@ public class UserProfile {
 
     @OneToOne
     private User user;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public String getFirstName() {
         return firstName;
