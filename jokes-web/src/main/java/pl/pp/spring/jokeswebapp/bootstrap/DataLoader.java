@@ -4,21 +4,51 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 import pl.pp.spring.jokeswebapp.model.Category;
 import pl.pp.spring.jokeswebapp.model.Joke;
+import pl.pp.spring.jokeswebapp.model.User;
+import pl.pp.spring.jokeswebapp.model.UserProfile;
 import pl.pp.spring.jokeswebapp.services.CategoryService;
 import pl.pp.spring.jokeswebapp.services.JokeService;
+import pl.pp.spring.jokeswebapp.services.UserProfileService;
+import pl.pp.spring.jokeswebapp.services.UserService;
 
 @Component
 public class DataLoader implements CommandLineRunner {
     private final JokeService jokeService;
     private final CategoryService categoryService;
+    private final UserService userService;
+    private final UserProfileService userProfileService;
 
-    public DataLoader(JokeService jokeService, CategoryService categoryService) {
+
+    public DataLoader(JokeService jokeService, CategoryService categoryService, UserService userService, UserProfileService userProfileService) {
         this.jokeService = jokeService;
         this.categoryService = categoryService;
+        this.userService = userService;
+        this.userProfileService = userProfileService;
     }
 
     @Override
     public void run(String... args) {
+
+        User janKowalski = new User();
+        janKowalski.setUsername("jankowalski");
+        janKowalski.setEmail("jankowalski@gmail.com");
+        janKowalski.setPassword("qwerty");
+
+        UserProfile janKowalskiProfile = new UserProfile();
+        janKowalskiProfile.setFirstName("Jan");
+        janKowalskiProfile.setLastName("Kowalski");
+
+        userProfileService.save(janKowalskiProfile);
+
+        janKowalski.setUserProfile(janKowalskiProfile);
+
+        User michalNowak = new User();
+        michalNowak.setUsername("mich12");
+        michalNowak.setEmail("michalnowak@gmail.com");
+        michalNowak.setPassword("michalNowak");
+
+        userService.save(janKowalski);
+        userService.save(michalNowak);
 
         Joke joke1 = getExampleJoke1();
         Joke joke2 = getExampleJoke2();

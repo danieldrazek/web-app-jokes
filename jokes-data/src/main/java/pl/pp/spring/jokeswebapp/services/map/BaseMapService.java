@@ -1,6 +1,7 @@
-package pl.pp.spring.jokeswebapp.services;
+package pl.pp.spring.jokeswebapp.services.map;
 
 import pl.pp.spring.jokeswebapp.model.BaseEntity;
+import pl.pp.spring.jokeswebapp.services.BaseService;
 
 import java.util.ArrayList;
 import java.util.HashMap;
