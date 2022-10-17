@@ -6,6 +6,7 @@ import pl.pp.spring.jokeswebapp.model.User;
 import pl.pp.spring.jokeswebapp.repositories.UserRepository;
 import pl.pp.spring.jokeswebapp.services.UserService;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -20,12 +21,14 @@ public class UserDbService implements UserService {
 
     @Override
     public List<User> findAll() {
-        return null;
+        List<User> users = new ArrayList<>();
+        userRepository.findAll().forEach(users::add);
+        return users;
     }
 
     @Override
     public User findById(Long id) {
-        return null;
+        return userRepository.findById(id).orElse(null);
     }
 
     @Override
