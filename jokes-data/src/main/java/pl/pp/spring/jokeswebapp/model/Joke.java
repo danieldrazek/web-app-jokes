@@ -1,11 +1,17 @@
 package pl.pp.spring.jokeswebapp.model;
 
+import javax.persistence.Entity;
+import javax.persistence.Lob;
+import javax.persistence.Transient;
 import java.util.ArrayList;
 import java.util.List;
 
+@Entity
 public class Joke extends BaseEntity{
     private String title;
+    @Lob
     private String content;
+    @Transient
     private List<Category> categories = new ArrayList<>();
 
     public Joke() {
