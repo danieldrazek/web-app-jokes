@@ -16,14 +16,11 @@ public class DataLoader implements CommandLineRunner {
     private final JokeService jokeService;
     private final CategoryService categoryService;
     private final UserService userService;
-    private final UserProfileService userProfileService;
 
-
-    public DataLoader(JokeService jokeService, CategoryService categoryService, UserService userService, UserProfileService userProfileService) {
+    public DataLoader(JokeService jokeService, CategoryService categoryService, UserService userService) {
         this.jokeService = jokeService;
         this.categoryService = categoryService;
         this.userService = userService;
-        this.userProfileService = userProfileService;
     }
 
     @Override
@@ -37,10 +34,9 @@ public class DataLoader implements CommandLineRunner {
         UserProfile janKowalskiProfile = new UserProfile();
         janKowalskiProfile.setFirstName("Jan");
         janKowalskiProfile.setLastName("Kowalski");
+        janKowalskiProfile.setUser(janKowalski);
 
-        userProfileService.save(janKowalskiProfile);
-
-//        janKowalski.setUserProfile(janKowalskiProfile);
+        janKowalski.setUserProfile(janKowalskiProfile);
 
         User michalNowak = new User();
         michalNowak.setUsername("mich12");
