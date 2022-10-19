@@ -1,6 +1,8 @@
 package pl.pp.spring.jokeswebapp.model;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "user1")
@@ -16,6 +18,9 @@ public class User extends BaseEntity{
 
     @OneToOne(cascade = CascadeType.ALL)
     private UserProfile userProfile;
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private Set<Joke> jokes = new HashSet<>();
 
     public String getUsername() {
         return username;
@@ -47,5 +52,13 @@ public class User extends BaseEntity{
 
     public void setUserProfile(UserProfile userProfile) {
         this.userProfile = userProfile;
+    }
+
+    public Set<Joke> getJokes() {
+        return jokes;
+    }
+
+    public void setJokes(Set<Joke> jokes) {
+        this.jokes = jokes;
     }
 }
