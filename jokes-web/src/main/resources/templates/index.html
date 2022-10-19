@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Suchary</title>
+    <title>Jokes</title>
     <link rel="stylesheet" th:href="@{/css/main.css}">
 </head>
 
@@ -24,6 +24,7 @@
             <div class="joke" th:each="joke : ${jokes}">
                 <h2 class="title" th:text="${joke.title}">Title</h2>
                 <pre class="content" th:text="${joke.content}">Content</pre>
+                <div class="jokes-info">Author: <span th:text="${joke.user.username}"></span></div>
             </div>
         </div>
 

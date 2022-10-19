@@ -16,12 +16,14 @@
             <tr>
                 <th>Login</th>
                 <th>Email</th>
+                <th>jokes quantity</th>
             </tr>
         </thead>
         <tbody>
             <tr th:each="user : ${users}">
                 <td th:text="${user.username}">example_login</td>
                 <td th:text="${user.email}">example_email@gmail.com</td>
+                <td th:text="${user.jokes.size}">1</td>
             </tr>
         </tbody>
 
