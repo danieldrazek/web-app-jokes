@@ -1,6 +1,7 @@
 package pl.pp.spring.jokeswebapp.services.db;
 
 import org.springframework.context.annotation.Primary;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 import pl.pp.spring.jokeswebapp.model.Joke;
 import pl.pp.spring.jokeswebapp.repositories.JokeRepository;
@@ -11,6 +12,7 @@ import java.util.List;
 
 @Service
 @Primary
+@Profile("db")
 public class JokeDbService implements JokeService {
 
     private final JokeRepository jokeRepository;
