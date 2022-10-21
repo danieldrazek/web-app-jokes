@@ -27,6 +27,11 @@ public class Joke extends BaseEntity {
         this.content = content;
     }
 
+    public void addCategory(Category category){
+        categories.add(category);
+        category.getJokes().add(this);
+    }
+
     @Override
     public String toString() {
         return "Joke{" +
@@ -66,5 +71,6 @@ public class Joke extends BaseEntity {
 
     public void setUser(User user) {
         this.user = user;
+        user.getJokes().add(this);
     }
 }

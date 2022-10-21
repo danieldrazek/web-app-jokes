@@ -22,16 +22,14 @@ public class DataLoader implements CommandLineRunner {
     @Override
     public void run(String... args) {
 
+        UserProfile janKowalskiProfile = new UserProfile();
+        janKowalskiProfile.setFirstName("Jan");
+        janKowalskiProfile.setLastName("Kowalski");
+
         User janKowalski = new User();
         janKowalski.setUsername("jankowalski");
         janKowalski.setEmail("jankowalski@gmail.com");
         janKowalski.setPassword("qwerty");
-
-        UserProfile janKowalskiProfile = new UserProfile();
-        janKowalskiProfile.setFirstName("Jan");
-        janKowalskiProfile.setLastName("Kowalski");
-        janKowalskiProfile.setUser(janKowalski);
-
         janKowalski.setUserProfile(janKowalskiProfile);
 
         User michalNowak = new User();
@@ -50,16 +48,9 @@ public class DataLoader implements CommandLineRunner {
         categoryService.save(category2);
         categoryService.save(category3);
 
-        joke1.getCategories().add(category1);
-        joke2.getCategories().add(category2);
-        joke2.getCategories().add(category3);
-
-        category1.getJokes().add(joke1);
-        category2.getJokes().add(joke2);
-        category3.getJokes().add(joke2);
-
-        janKowalski.getJokes().add(joke1);
-        janKowalski.getJokes().add(joke2);
+        joke1.addCategory(category1);
+        joke2.addCategory(category2);
+        joke2.addCategory(category3);
 
         joke1.setUser(janKowalski);
         joke2.setUser(janKowalski);
