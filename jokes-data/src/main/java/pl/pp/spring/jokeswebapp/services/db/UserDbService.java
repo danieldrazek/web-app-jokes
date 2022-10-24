@@ -1,5 +1,7 @@
 package pl.pp.spring.jokeswebapp.services.db;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Primary;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
@@ -14,6 +16,7 @@ import java.util.List;
 @Primary
 @Profile("db")
 public class UserDbService implements UserService {
+    private Logger log = LoggerFactory.getLogger(UserDbService.class);
 
     private final UserRepository userRepository;
 
@@ -35,7 +38,7 @@ public class UserDbService implements UserService {
 
     @Override
     public User save(User user) {
-        System.out.println("user db service");
+        log.info("saving user: {}", user.getUsername());
         return userRepository.save(user);
     }
 }

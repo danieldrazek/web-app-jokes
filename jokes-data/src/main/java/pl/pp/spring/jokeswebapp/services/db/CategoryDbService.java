@@ -1,5 +1,7 @@
 package pl.pp.spring.jokeswebapp.services.db;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 import pl.pp.spring.jokeswebapp.model.Category;
@@ -12,6 +14,7 @@ import java.util.List;
 @Service
 @Profile("db")
 public class CategoryDbService implements CategoryService {
+    private Logger log = LoggerFactory.getLogger(CategoryDbService.class);
 
     private final CategoryRepository categoryRepository;
 
@@ -33,7 +36,7 @@ public class CategoryDbService implements CategoryService {
 
     @Override
     public Category save(Category category) {
-        System.out.println("category db service");
+        log.info("saving category: {}", category.getName());
         return categoryRepository.save(category);
     }
 }
