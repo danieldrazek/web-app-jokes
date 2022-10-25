@@ -1,5 +1,7 @@
 package pl.pp.spring.jokeswebapp.controllers;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -18,13 +20,17 @@ public class JokeController {
     private final CategoryService categoryService;
     private final JokeService jokeService;
 
+    private Logger log = LoggerFactory.getLogger(IndexController.class);
+
     public JokeController(CategoryService categoryService, JokeService jokeService) {
         this.categoryService = categoryService;
         this.jokeService = jokeService;
     }
 
     @RequestMapping({"/jokes"})
-    public String showIndex(Model model, @RequestParam("categoryId") Long categoryId) {
+    public String showJokesForCategory(Model model, @RequestParam("categoryId") Long categoryId) {
+
+        log.info("showJokesForCategory categoryId: {}", categoryId);
         model.addAttribute("jokes", categoryService.findById(categoryId).getJokes());
         model.addAttribute("categories", categoryService.findAll());
 
@@ -33,6 +39,8 @@ public class JokeController {
 
     @GetMapping("/jokes/add")
     public String addJokeForm(Model model) {
+        log.info("add joke form");
+
         model.addAttribute("categories", categoryService.findAll());
         model.addAttribute("joke", new Joke());
 
@@ -41,7 +49,7 @@ public class JokeController {
 
     @PostMapping("/jokes/add")
     public String addJoke(@ModelAttribute Joke joke, @RequestParam("category") List<Long> categoryIds) {
-        System.out.println(joke);
+        log.info("add joke: {}, categories: {}", joke, categoryIds);
 
         Set<Category> categories = new HashSet<>();
 

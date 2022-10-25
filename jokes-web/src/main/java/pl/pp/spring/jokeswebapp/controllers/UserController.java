@@ -1,5 +1,7 @@
 package pl.pp.spring.jokeswebapp.controllers;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -10,12 +12,16 @@ public class UserController {
 
     private final UserService userService;
 
+    private Logger log = LoggerFactory.getLogger(UserController.class);
+
     public UserController(UserService userService) {
         this.userService = userService;
     }
 
     @RequestMapping({"/users"})                 //przechwywtywane zadanie
-    public String showIndex(Model model) {
+    public String showUserList(Model model) {
+
+        log.info("showUserList");
         model.addAttribute("users", userService.findAll());
         return "users/list";
     }
