@@ -4,6 +4,7 @@ import javax.persistence.*;
 import java.time.LocalDate;
 
 @Entity
+@Table(name = "user_profiles")
 public class UserProfile extends BaseEntity{
 
     private String firstName;

@@ -5,6 +5,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
+@Table(name = "jokes")
 public class Joke extends BaseEntity {
     private String title;
     @Lob

@@ -2,10 +2,12 @@ package pl.pp.spring.jokeswebapp.model;
 
 import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
+import javax.persistence.Table;
 import java.util.HashSet;
 import java.util.Set;
 
 @Entity
+@Table(name = "categories")
 public class Category extends BaseEntity{
     private String name;
     @ManyToMany(mappedBy = "categories")
