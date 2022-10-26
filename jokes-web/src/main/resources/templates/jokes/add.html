@@ -7,23 +7,30 @@
     <link rel="stylesheet" th:href="@{/css/form.css}">
 </head>
 <body>
-    <h1 class="header">Add new joke</h1>
+<div id="menu">
+    <a th:href="@{/}" class="menu-item">Main page</a>
+    <a th:href="@{/users}" class="menu-item">Users</a>
+    <a th:href="@{/jokes/add}" class="menu-item">+ Add new joke +</a>
 
-    <div id="form-container">
-        <form method="post" th:action="@{/jokes/add}" th:object="${joke}">
-            <input type="text" placeholder="Title" th:field="*{title}">
-            <textarea rows="7" placeholder="joke" th:field="*{content}"></textarea>
+    <div style="clear: both;"></div>
+</div>
+<h1 class="header">Add new joke</h1>
 
-            <h3>Category</h3>
-            <div th:each="category : ${categories}">
-                <input th:attr="id=${category.id}" type="checkbox" name="category" th:value="${category.id}">
-                <label th:attr="for=${category.id}" th:text="${category.name}">Category</label>
-            </div>
+<div id="form-container">
+    <form method="post" th:action="@{/jokes/add}" th:object="${joke}">
+        <input type="text" placeholder="Title" th:field="*{title}">
+        <textarea rows="7" placeholder="joke" th:field="*{content}"></textarea>
 
-            <input type="Submit" value="Add">
+        <h3>Category</h3>
+        <div th:each="category : ${categories}">
+            <input th:attr="id=${category.id}" type="checkbox" name="category" th:value="${category.id}">
+            <label th:attr="for=${category.id}" th:text="${category.name}">Category</label>
+        </div>
 
-        </form>
-    </div>
+        <input type="Submit" value="Add">
+
+    </form>
+</div>
 
 </body>
 </html>

@@ -7,29 +7,35 @@
 </head>
 
 <body>
-    <div id="wrapper">
-        <h1 class="header">Welcome on the jokes website</h1>
-        <a class="inner-link" th:href="@{jokes/add}"><div class="add-button">+ Add new joke +</div></a>
-        <div id="categories">
-            <h3 class="header">Categories</h3>
-            <a class="inner-link" th:each="category : ${categories}" th:href="@{/jokes(categoryId=${category.id})}">
-                <div class="category" th:text="${category.name}">
-                    category
-                </div>
-            </a>
+<div id="menu">
+    <a th:href="@{/}" class="menu-item">Main page</a>
+    <a th:href="@{/users}" class="menu-item">Users</a>
+    <a th:href="@{/jokes/add}" class="menu-item">+ Add new joke +</a>
 
-        </div>
-
-        <div id="jokes">
-            <div class="joke" th:each="joke : ${jokes}">
-                <h2 class="title" th:text="${joke.title}">Title</h2>
-                <pre class="content" th:text="${joke.content}">Content</pre>
-                <div class="jokes-info">Author: <span th:text="${joke.user.username}"></span></div>
+    <div style="clear: both;"></div>
+</div>
+<div id="wrapper">
+    <h1 class="header">Welcome on the jokes website</h1>
+    <div id="categories">
+        <h3 class="header">Categories</h3>
+        <a class="inner-link" th:each="category : ${categories}" th:href="@{/jokes(categoryId=${category.id})}">
+            <div class="category" th:text="${category.name}">
+                category
             </div>
-        </div>
+        </a>
 
-        <div class="clear: both;"></div>
     </div>
+
+    <div id="jokes">
+        <div class="joke" th:each="joke : ${jokes}">
+            <h2 class="title" th:text="${joke.title}">Title</h2>
+            <pre class="content" th:text="${joke.content}">Content</pre>
+            <div class="joke-info">Author: <span th:text="${joke.user.username}"></span></div>
+        </div>
+    </div>
+
+    <div class="clear: both;"></div>
+</div>
 
 </body>
 </html>

@@ -8,23 +8,30 @@
 </head>
 
 <body>
+<div id="menu">
+    <a th:href="@{/}" class="menu-item">Main page</a>
+    <a th:href="@{/users}" class="menu-item">Users</a>
+    <a th:href="@{/jokes/add}" class="menu-item">+ Add new joke +</a>
+
+    <div style="clear: both;"></div>
+</div>
 <h1 class="header">Users List</h1>
 <div id="wrapper">
 
     <table class="styled-table">
         <thead>
-            <tr>
-                <th>Login</th>
-                <th>Email</th>
-                <th>jokes quantity</th>
-            </tr>
+        <tr>
+            <th>Login</th>
+            <th>Email</th>
+            <th>jokes quantity</th>
+        </tr>
         </thead>
         <tbody>
-            <tr th:each="user : ${users}">
-                <td th:text="${user.username}">example_login</td>
-                <td th:text="${user.email}">example_email@gmail.com</td>
-                <td th:text="${user.jokes.size}">1</td>
-            </tr>
+        <tr th:each="user : ${users}">
+            <td th:text="${user.username}">example_login</td>
+            <td th:text="${user.email}">example_email@gmail.com</td>
+            <td th:text="${user.jokes.size}">1</td>
+        </tr>
         </tbody>
 
     </table>
