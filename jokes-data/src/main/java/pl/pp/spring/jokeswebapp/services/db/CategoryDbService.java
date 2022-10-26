@@ -32,7 +32,7 @@ public class CategoryDbService implements CategoryService {
 
     @Override
     public Category findById(Long id) {
-        log.info("finding by id: {}" ,id);
+        log.info("finding by id: {}", id);
         return categoryRepository.findById(id).orElse(null);
     }
 

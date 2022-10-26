@@ -1,11 +1,14 @@
 package pl.pp.spring.jokeswebapp.model;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.Lob;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
 import java.time.LocalDate;
 
 @Entity
 @Table(name = "user_profiles")
-public class UserProfile extends BaseEntity{
+public class UserProfile extends BaseEntity {
 
     private String firstName;
     private String lastName;

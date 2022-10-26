@@ -12,8 +12,8 @@ public class Joke extends BaseEntity {
     private String content;
     @ManyToMany
     @JoinTable(name = "JOKE_CATEGORIES",
-        joinColumns = @JoinColumn(name = "JOKES_ID"),
-        inverseJoinColumns = @JoinColumn(name = "CATEGORIES_ID"))
+            joinColumns = @JoinColumn(name = "JOKES_ID"),
+            inverseJoinColumns = @JoinColumn(name = "CATEGORIES_ID"))
     private Set<Category> categories = new HashSet<>();
 
     @ManyToOne
@@ -28,7 +28,7 @@ public class Joke extends BaseEntity {
         this.content = content;
     }
 
-    public void addCategory(Category category){
+    public void addCategory(Category category) {
         categories.add(category);
         category.getJokes().add(this);
     }
