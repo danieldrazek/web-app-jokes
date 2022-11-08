@@ -20,18 +20,20 @@ public class JokeController {
     private final CategoryService categoryService;
     private final JokeService jokeService;
 
-    private Logger log = LoggerFactory.getLogger(IndexController.class);
+    private Logger log = LoggerFactory.getLogger(JokeController.class);
 
     public JokeController(CategoryService categoryService, JokeService jokeService) {
         this.categoryService = categoryService;
         this.jokeService = jokeService;
     }
 
-    @RequestMapping({"/jokes"})
+    @GetMapping({"/jokes"})
     public String showJokesForCategory(Model model, @RequestParam("categoryId") Long categoryId) {
-
         log.info("showJokesForCategory categoryId: {}", categoryId);
-        model.addAttribute("jokes", categoryService.findById(categoryId).getJokes());
+
+        Category category = categoryService.findById(categoryId);
+        Set<Joke> jokes = category == null ? new HashSet<>() : category.getJokes();
+        model.addAttribute("jokes", jokes);
         model.addAttribute("categories", categoryService.findAll());
 
         return "index";
@@ -60,7 +62,7 @@ public class JokeController {
             categories.add(category);
         }
 
-        System.out.println(categories);
+        log.info(categories.toString());
 
         joke.setCategories(categories);
 

@@ -69,6 +69,7 @@ class UserProfileDbServiceTest {
 
     @Test
     void save() {
+        userProfile.setFirstName("Daniel");
 
         userProfileDbService.save(userProfile);
 

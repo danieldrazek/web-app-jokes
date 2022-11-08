@@ -28,7 +28,7 @@ class UserDbServiceTest {
     @InjectMocks
     private UserDbService userDbService;
 
-    private final User user = new User();
+    private final User user = new User("Jan Kowalski");
 
     @Test
     void findAllShouldReturnEmptyList() {

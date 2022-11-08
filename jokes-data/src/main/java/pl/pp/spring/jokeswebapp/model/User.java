@@ -22,6 +22,13 @@ public class User extends BaseEntity {
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private Set<Joke> jokes = new HashSet<>();
 
+    public User() {
+    }
+
+    public User(String username) {
+        this.username = username;
+    }
+
     public String getUsername() {
         return username;
     }
