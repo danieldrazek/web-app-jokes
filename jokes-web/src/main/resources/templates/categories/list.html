@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Users List</title>
+    <title>Categories List</title>
     <link rel="stylesheet" th:href="@{/css/main.css}">
     <link rel="stylesheet" th:href="@{/css/table.css}">
 </head>
@@ -16,22 +16,22 @@
 
     <div style="clear: both;"></div>
 </div>
-<h1 class="header">Users List</h1>
+<h1 class="header">Categories List</h1>
 <div id="wrapper">
 
     <table class="styled-table">
         <thead>
         <tr>
-            <th>Login</th>
-            <th>Email</th>
-            <th>jokes quantity</th>
+            <th>Name</th>
+            <th>Edit</th>
+            <th>Delete</th>
         </tr>
         </thead>
         <tbody>
-        <tr th:each="user : ${users}">
-            <td th:text="${user.username}">example_login</td>
-            <td th:text="${user.email}">example_email@gmail.com</td>
-            <td th:text="${user.jokes.size}">1</td>
+        <tr th:each="category : ${categories}">
+            <td th:text="${category.name}">name</td>
+            <td>Edit</td>
+            <td>Delete</td>
         </tr>
         </tbody>
 

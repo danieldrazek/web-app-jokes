@@ -19,9 +19,9 @@ public class UserController {
     }
 
     @GetMapping({"/users"})                 //przechwywtywane zadanie
-    public String showUserList(Model model) {
+    public String showUsersList(Model model) {
 
-        log.info("showUserList");
+        log.info("showUsersList");
         model.addAttribute("users", userService.findAll());
         return "users/list";
     }
