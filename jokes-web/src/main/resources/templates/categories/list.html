@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Categories List</title>
+    <title>Categories</title>
     <link rel="stylesheet" th:href="@{/css/main.css}">
     <link rel="stylesheet" th:href="@{/css/table.css}">
 </head>
@@ -17,7 +17,11 @@
     <div style="clear: both;"></div>
 </div>
 <h1 class="header">Categories List</h1>
+
 <div id="wrapper">
+    <a class="inner-link" th:href="@{/categories/add}">
+        <div class="add-button">Add new category</div>
+    </a>
 
     <table class="styled-table">
         <thead>

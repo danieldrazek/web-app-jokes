@@ -23,7 +23,7 @@ body {
 }
 
 .add-button {
-    background-color: #00AA00;
+    background-color: #009879;
     border: 1px solid black;
     border-radius: 5px;
     width: 150px;
@@ -32,7 +32,7 @@ body {
 }
 
 .add-button:hover {
-     background-color: #00DD00;
+     background-color: #00A98A;
      cursor: pointer;
 }
 
