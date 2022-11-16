@@ -18,10 +18,11 @@
 <h1 class="header">Add new category</h1>
 
 <div id="form-container">
-    <form method="post" th:action="@{/categories/add}" th:object="${category}">
+    <form method="post" th:action="@{/categories/save}" th:object="${category}">
+        <input type="hidden" th:field="*{id}">
         <input type="text" placeholder="category name" th:field="*{name}">
 
-        <input type="Submit" value="Add">
+        <input type="Submit" value="Save">
 
     </form>
 </div>
