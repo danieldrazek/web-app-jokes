@@ -32,4 +32,9 @@ public abstract class BaseMapService<E extends BaseEntity> implements BaseServic
         return entity;
     }
 
+    @Override
+    public void deleteById(Long id){
+        map.remove(id);
+    }
+
 }

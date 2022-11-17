@@ -50,6 +50,15 @@ public class CategoryController {
         return "categories/save";
     }
 
+    @GetMapping({"/categories/{categoryId}/delete"})
+    public String deleteCategory(@PathVariable Long categoryId) {
+        log.info("deleteCategory");
+
+        categoryService.deleteById(categoryId);
+
+        return "redirect:/categories";
+    }
+
     @PostMapping({"/categories/save"})
     public String processCategoryForm(@ModelAttribute Category category) {
         log.info("processCategoryForm");

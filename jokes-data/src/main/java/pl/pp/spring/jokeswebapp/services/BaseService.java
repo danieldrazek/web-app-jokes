@@ -10,4 +10,6 @@ public interface BaseService<E extends BaseEntity> {
     E findById(Long id);
 
     E save(E joke);
+
+    void deleteById(Long id);
 }
