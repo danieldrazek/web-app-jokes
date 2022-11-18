@@ -8,6 +8,7 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
+import pl.pp.spring.jokeswebapp.exceptions.NotFoundException;
 import pl.pp.spring.jokeswebapp.model.Category;
 import pl.pp.spring.jokeswebapp.model.Joke;
 import pl.pp.spring.jokeswebapp.services.CategoryService;
@@ -48,13 +49,12 @@ class JokeControllerTest {
 
     @Test
     void showJokesForNotExistCategory() throws Exception {
+        when(categoryService.findById(anyLong())).thenThrow(NotFoundException.class);
+
         mockMvc.perform(get("/jokes?categoryId=1"))
-                .andExpect(status().isOk())
-                .andExpect(view().name("index"))
-                .andExpect(model().attribute("jokes", hasSize(0)));
+                .andExpect(status().isNotFound());
 
         verify(categoryService).findById(anyLong());
-        verify(categoryService).findAll();
     }
 
     @Test

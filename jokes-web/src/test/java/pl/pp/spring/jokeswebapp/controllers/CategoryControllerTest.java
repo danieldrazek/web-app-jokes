@@ -8,6 +8,7 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
+import pl.pp.spring.jokeswebapp.exceptions.NotFoundException;
 import pl.pp.spring.jokeswebapp.model.Category;
 import pl.pp.spring.jokeswebapp.services.CategoryService;
 
@@ -18,8 +19,7 @@ import static org.hamcrest.collection.IsCollectionWithSize.hasSize;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyLong;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
@@ -89,10 +89,20 @@ class CategoryControllerTest {
     }
 
     @Test
-    void deleteCategory() throws Exception {
+    void deleteExistCategory() throws Exception {
         mockMvc.perform(get("/categories/1/delete"))
                 .andExpect(status().is3xxRedirection())
                 .andExpect(view().name("redirect:/categories"));
+
+        verify(categoryService).deleteById(1L);
+    }
+
+    @Test
+    void deleteNotExistCategory() throws Exception {
+        doThrow(NotFoundException.class).when(categoryService).deleteById(anyLong());
+
+        mockMvc.perform(get("/categories/1/delete"))
+                .andExpect(status().isNotFound());
 
         verify(categoryService).deleteById(1L);
     }
