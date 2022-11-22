@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Jokes</title>
+    <link rel="stylesheet" th:href="@{/css/main.css}">
+</head>
+
+<body>
+<div id="menu">
+    <a th:href="@{/}" class="menu-item">Home</a>
+    <a th:href="@{/categories}" class="menu-item">Categories</a>
+    <a th:href="@{/users}" class="menu-item">Users</a>
+    <a th:href="@{/jokes/add}" class="menu-item">+ Add new joke +</a>
+
+    <div style="clear: both;"></div>
+</div>
+<div id="wrapper">
+    <h1>Error 404 - Not found</h1>
+    <p th:text="${message}"></p>
+</div>
+
+</body>
+</html>
