@@ -41,7 +41,8 @@ class JokeControllerTest {
 
     @BeforeEach
     void setUp() {
-        mockMvc = MockMvcBuilders.standaloneSetup(jokeController).build();
+        mockMvc = MockMvcBuilders.standaloneSetup(jokeController)
+                .setControllerAdvice(new ExceptionHandlerController()).build();
 
         category.getJokes().add(new Joke("title", "content"));
         category.getJokes().add(new Joke("title 2", "content 2"));

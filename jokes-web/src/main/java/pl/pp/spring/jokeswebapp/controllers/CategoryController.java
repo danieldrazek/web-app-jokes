@@ -2,12 +2,12 @@ package pl.pp.spring.jokeswebapp.controllers;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
-import pl.pp.spring.jokeswebapp.exceptions.NotFoundException;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import pl.pp.spring.jokeswebapp.model.Category;
 import pl.pp.spring.jokeswebapp.services.CategoryService;
 
@@ -57,19 +57,6 @@ public class CategoryController {
         categoryService.deleteById(categoryId);
 
         return "redirect:/categories";
-    }
-
-    @ResponseStatus(HttpStatus.NOT_FOUND)
-    @ExceptionHandler(NotFoundException.class)
-    public ModelAndView handleNotFound(Exception exception){
-        log.warn("Handle not found error: {}", exception.getMessage());
-
-        ModelAndView modelAndView = new ModelAndView();
-
-        modelAndView.setViewName("errors/404");
-        modelAndView.addObject("message", exception.getMessage());
-
-        return modelAndView;
     }
 
     @PostMapping({"/categories/save"})
