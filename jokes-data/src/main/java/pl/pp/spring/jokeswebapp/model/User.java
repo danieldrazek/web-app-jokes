@@ -1,5 +1,7 @@
 package pl.pp.spring.jokeswebapp.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
@@ -14,12 +16,15 @@ public class User extends BaseEntity {
     private String email;
 
     @Column(name = "password")
+    @JsonIgnore
     private String password;
 
     @OneToOne(cascade = CascadeType.ALL)
+    @JsonIgnore
     private UserProfile userProfile;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    @JsonIgnore
     private Set<Joke> jokes = new HashSet<>();
 
     public User() {
