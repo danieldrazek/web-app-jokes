@@ -50,4 +50,17 @@ public class CategoryRestController {
         return ResponseEntity.created(URI.create("/api/categories/" + savedCategory.getId())).body(savedCategory);
     }
 
+    @DeleteMapping("/api/categories/{id}")
+    public ResponseEntity<Category> delete(@PathVariable Long id) {
+
+        log.info("delete");
+
+        try {
+            categoryService.deleteById(id);
+            return ResponseEntity.noContent().build();
+        } catch (NotFoundException e) {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
 }
