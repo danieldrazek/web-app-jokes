@@ -3,13 +3,12 @@ package pl.pp.spring.jokeswebapp.rest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import pl.pp.spring.jokeswebapp.exceptions.NotFoundException;
 import pl.pp.spring.jokeswebapp.model.Category;
 import pl.pp.spring.jokeswebapp.services.CategoryService;
 
+import java.net.URI;
 import java.util.List;
 
 @RestController
@@ -26,14 +25,14 @@ public class CategoryRestController {
     @GetMapping("/api/categories")
     public ResponseEntity<List<Category>> getAll() {
 
-        log.info("showCategoriesList");
+        log.info("getAll");
         return ResponseEntity.ok(categoryService.findAll());
     }
 
     @GetMapping("/api/categories/{id}")
     public ResponseEntity<Category> getById(@PathVariable Long id) {
 
-        log.info("showCategoryById");
+        log.info("getById");
 
         try {
             Category category = categoryService.findById(id);
@@ -41,6 +40,14 @@ public class CategoryRestController {
         } catch (NotFoundException e) {
             return ResponseEntity.notFound().build();
         }
+    }
+
+    @PostMapping("/api/categories")
+    public ResponseEntity<Category> add(@RequestBody Category category) {
+
+        log.info("add");
+        Category savedCategory = categoryService.save(category);
+        return ResponseEntity.created(URI.create("/api/categories/" + savedCategory.getId())).body(savedCategory);
     }
 
 }
