@@ -5,6 +5,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Primary;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
+import pl.pp.spring.jokeswebapp.exceptions.NotFoundException;
 import pl.pp.spring.jokeswebapp.model.Joke;
 import pl.pp.spring.jokeswebapp.repositories.JokeRepository;
 import pl.pp.spring.jokeswebapp.services.JokeService;
@@ -35,7 +36,8 @@ public class JokeDbService implements JokeService {
     @Override
     public Joke findById(Long id) {
         log.info("finding by id: {}", id);
-        return jokeRepository.findById(id).orElse(null);
+        return jokeRepository.findById(id).orElseThrow(() ->
+                new NotFoundException("Not found joke with id: " + id));
     }
 
     @Override
@@ -47,6 +49,12 @@ public class JokeDbService implements JokeService {
     @Override
     public void deleteById(Long id) {
         log.info("deleting joke by id: {}", id);
+        Joke joke = jokeRepository.findById(id).orElseThrow(() ->
+                new NotFoundException("Not found joke with id: " + id));
+
+        joke.getCategories().forEach(category -> {
+            category.getJokes().remove(joke);
+        });
         jokeRepository.deleteById(id);
     }
 }

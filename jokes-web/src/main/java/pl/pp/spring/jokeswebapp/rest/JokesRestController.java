@@ -16,7 +16,7 @@ public class JokesRestController {
 
     private final JokeService jokeService;
 
-    private Logger log = LoggerFactory.getLogger(JokesRestController.class);
+    private Logger log = LoggerFactory.getLogger(JokeService.class);
 
     public JokesRestController(JokeService jokeService) {
         this.jokeService = jokeService;

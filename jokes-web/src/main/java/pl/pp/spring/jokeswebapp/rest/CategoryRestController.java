@@ -16,7 +16,7 @@ public class CategoryRestController {
 
     private final CategoryService categoryService;
 
-    private Logger log = LoggerFactory.getLogger(CategoryRestController.class);
+    private Logger log = LoggerFactory.getLogger(CategoryService.class);
 
     public CategoryRestController(CategoryService categoryService) {
         this.categoryService = categoryService;
