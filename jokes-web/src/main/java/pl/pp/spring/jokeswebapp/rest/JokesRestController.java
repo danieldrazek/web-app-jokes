@@ -72,4 +72,21 @@ public class JokesRestController {
         return ResponseEntity.ok(savedJoke);
     }
 
+    @PatchMapping("/api/jokes/{id}")
+    public ResponseEntity<Joke> partialUpdate(@RequestBody Joke joke, @PathVariable Long id) {
+
+        log.info("partialUpdate");
+        Joke newJoke = jokeService.findById(id);
+
+        if (joke.getTitle() != null){
+            newJoke.setTitle(joke.getTitle());
+        }
+        if (joke.getContent() != null){
+            newJoke.setContent(joke.getContent());
+        }
+
+        Joke savedJoke = jokeService.save(newJoke);     //save newJoke in db
+        return ResponseEntity.ok(savedJoke);
+    }
+
 }
